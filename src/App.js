@@ -5,7 +5,7 @@ import TodoCard from './components/pages/TodoCard';
 import Briefcase from './assets/images/briefcase.svg';
 import Personal from './assets/images/Personal.svg';
 import Food from './assets/images/food.svg';
-
+import AddTodo from './components/pages/AddTodo';
 
 function App() {
 
@@ -136,12 +136,14 @@ function App() {
             </div>
         
 
-  
+            <AddTodo />
            
     </>         
         
     
   )
+   
+     
 }
 
 export default App;
