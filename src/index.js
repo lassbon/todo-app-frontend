@@ -3,9 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import TodoCard from './components/TodoCard'
+import ReactTooltip from 'react-tooltip';
 
 ReactDOM.render(
   <React.StrictMode>
+    <ReactTooltip />
     <App />
   </React.StrictMode>,
   document.getElementById('root')
