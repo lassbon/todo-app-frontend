@@ -1,10 +1,10 @@
 import logo from './logo.svg';
 import './App.css';
 import Header from './components/shared/Header'
-import TodoCard from './components/TodoCard';
-import Briefcase from './components/images/briefcase.svg';
-import Personal from './components/images/Personal.svg';
-import Food from './components/images/food.svg';
+import TodoCard from './components/pages/TodoCard';
+import Briefcase from './assets/images/briefcase.svg';
+import Personal from './assets/images/Personal.svg';
+import Food from './assets/images/food.svg';
 
 
 function App() {

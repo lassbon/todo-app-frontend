@@ -1,15 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ReactTooltip from 'react-tooltip';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import TodoCard from './components/TodoCard'
-import ReactTooltip from 'react-tooltip';
+import TodoCard from './components/pages/TodoCard'
+import Home from './components/pages/Home'
 
 ReactDOM.render(
   <React.StrictMode>
     <ReactTooltip />
-    <App />
+    <Home />
   </React.StrictMode>,
   document.getElementById('root')
 );
