@@ -1,6 +1,8 @@
-const AddTodo = ()=> {
+import Header from "../../shared/Header";
+const AddTodo = () => {
     return (
-        <>
+   
+        <Header>
             <div className="container mx-auto">
             <div className="grid grid-col-6 gap-4 ml-32">
                 <div className="col-span-2"></div>
@@ -16,7 +18,8 @@ const AddTodo = ()=> {
             </div>
             </div>
         
-        </>
+        </Header>
+ 
     )
 }
 
