@@ -4,10 +4,14 @@ import './index.css';
 import App from './App';
 import Header from './components/shared/Header'
 import reportWebVitals from './reportWebVitals';
+import TodoCard from './components/TodoCard'
+import ReactTooltip from 'react-tooltip';
 
 ReactDOM.render(
   <React.StrictMode>
     <Header />
+    <ReactTooltip />
+    <App />
   </React.StrictMode>,
   document.getElementById('root')
 );
