@@ -1,11 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
 import Header from './components/shared/Header'
+import DeleteTodo from './components/DeleteTodo'
 import TodoCard from './components/pages/TodoCard';
 import Briefcase from './assets/images/briefcase.svg';
 import Personal from './assets/images/Personal.svg';
 import Food from './assets/images/food.svg';
 import AddTodo from './components/pages/AddTodo';
+
 
 function App() {
 
@@ -111,9 +113,11 @@ function App() {
   }
 
   return (
+
+
     <>
             <Header /> 
-
+   <DeleteTodo/>
             <div className='container mx-auto'>
                 <div className="grid grid-cols-3 gap-10 p-20 border">
 
@@ -143,7 +147,6 @@ function App() {
     
   )
    
-     
 }
 
 export default App;

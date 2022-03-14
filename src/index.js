@@ -2,11 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ReactTooltip from 'react-tooltip';
 import './index.css';
+// import './App.css';
 import App from './App';
 import Header from './components/shared/Header'
 import reportWebVitals from './reportWebVitals';
+import DeleteTodo from './components/DeleteTodo'
+
 import TodoCard from './components/pages/TodoCard'
 import Home from './components/pages/Home'
+
 
 
 ReactDOM.render(
