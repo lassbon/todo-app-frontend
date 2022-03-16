@@ -1,26 +1,24 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import imageURL from '../../../../assets/images/personal.svg';
+import imageURL from '../../../../assets/images/personal.svg'
 
 const TodoCard = ({ name, bgcolor }) => {
 
-    const obj = useParams()
-   console.log(obj.id)
 
-    
     return(
        
 
             <div className="flex flex-row w-full rounded-3xl">
-                <div className= {` ${bgcolor} w-1/4  text-white text-3xl font-semibold p-10 rounded-lg`} >
+                {/* <div className= {` ${bgcolor} w-1/4  text-white text-3xl font-semibold p-10 rounded-lg`} >
                     <img src={imageURL} alt="personal"></img>
-                </div>
+                </div> */}
                 <div className=" flex flex-grow
-                  justify-between space-x-4 p-5 border border-blue-200 shadow-md rounded-lg hover:bg-rosh-100 transition ease-in duration-300">
+                  justify-between space-x-4 p-5 border-blue-200 shadow-md rounded-lg hover:bg-rosh-100 transition ease-in duration-300">
                     <div>
                     <h2 className="text-2xl"><b>{name.title}</b></h2>
                     <h3 className="text-1xl"><b>{name.contents}</b></h3>
-                        <h5>{name.craeted_at}</h5>
+                    <br />
+                     <h5>{name.craeted_at}</h5>
                     </div>
                     <input type="checkbox" className=" my-8 checked:bg-blue-500 ..." />
                 </div>

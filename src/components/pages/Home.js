@@ -1,25 +1,34 @@
 import homeTodo from '../../assets/images/homeTodo.jpeg'
-
+import {Link} from 'react-router-dom'
 const Home = () => {
 
     return (
         <>
             
-            <section>
-                <h1 className='p-5 text-2xl text-center'> Welcome to our todo app</h1>
-            </section>
-            <section>
-                <div className="w-full grid grid-cols-1 gap-10 p-20 text-center">
-                <div className="hero container max-w-screen-lg mx-auto pb-10">
-                        <img src={homeTodo} alt="Todo" className='' />
-                     
-                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-10">
-                            Start here
-                        </button>
-                </div>
-
-                </div>
-            </section>
+    <div className="pt-24">
+      <div className="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+    
+        <div className="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
+          <p className="uppercase tracking-loose w-full">What business are you?</p>
+          <h1 className="my-4 text-5xl font-bold leading-tight">
+            Main Hero Message to sell yourself!
+          </h1>
+          <p className="leading-normal text-2xl mb-8">
+            Sub-hero message, not too long and not too short. Make it just right!
+         </p>
+         <Link to="/view-todos"> 
+                            
+            <button className="mx-auto hover:bg-green-600 lg:mx-0 bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                Start here
+            </button>
+        </Link>
+        </div>
+      
+        <div className="w-full md:w-3/5 py-6 text-center">
+          <img className="w-full md:w-4/5 z-50 items-end" alt="Home" src={homeTodo} />
+        </div>
+      </div>
+    </div>
 
          </>
  

@@ -1,96 +1,75 @@
-
-import { useEffect, useState } from 'react';
-import TodoCard from '../ViewTodo/components/TodoCard';
-import Briefcase from '../../../assets/images/briefcase.svg';
-import Personal from '../../../assets/images/personal.svg';
-import Food from '../../../assets/images/food.svg';
+import DeleteButtons from "./components/DeleteButtons"
+// import RecycleBinIcon from '../components/RecycleBinIcon.jpg'
+import recyclingreuse from '../../../assets/images/recyclingreuse.gif'
+import CapturePNG from '../../../assets/images/capture.png'
+import { useEffect, useState } from "react"
+import { useParams, useNavigate } from "react-router-dom"
 import Header from "../../shared/Header";
-import { getTodos } from '../../../network/api'
-import { Link } from 'react-router-dom'
+import { getATodo, DeleteATodo } from '../../../network/api'
+import { getCategoryNameUsingEnumKey} from '../../../utils/utils'
 
-const  ViewTodo = () => {
+const ViewTodo = () => {
 
-  const [todos, setTodos] = useState([])
+    const Redirect = useNavigate()
+
+    const params = useParams()
+    const [todo, setTodo] = useState([])
+    const [deleteMessage, setDeleteMessage ] = useState("")
+
+    useEffect(() => {
+        ( async() =>{
+            
+            const response = await getATodo(params.id)
+            const { data } = await response.json()
+        console.log("here: ", data[0].id,  data[0].title)
+           setTodo(data[0])
+
+        })()
+
+    }, [])
 
 
 
-  useEffect(() => {
-    
-   (async() => {
+    const HandleDeleteClick = async () => {
+         
+       const deleteResp = await DeleteATodo(params.id)
+        const { message, status } = await deleteResp.json()
+        if (status === true) {
+            alert(message);
 
-      const response = await getTodos()
-     const data_ = await response.json() 
-    //  localStorage.setItem("todo", JSON.stringify(data_.data))
-    //  localStorage.getItem("todo")
-      setTodos(data_.data)
-     
-    })()
-    
- }, [])
+            Redirect('/view-todos')
 
 
-
-  function Colors(id) {
-    let lasVal = parseInt(id.charAt(id.length - 1))
-    let bgcolor = "bg-blue-200"
-        switch(lasVal) {
-          case 1:
-          case 5:
-          case 7:
-            bgcolor= "bg-blue-300"
-          break;
-          case 2:
-          case 4:
-          case 8:
-            bgcolor= "bg-yellow-300"
-          break;
-          case 6:
-          case 3:
-          case 9:
-            bgcolor= "bg-red-400"
-          break;  
-          default:
-            bgcolor="bg-blue-200"
+        } else {
+            alert(message)
         }
 
-        return bgcolor
-  }
-
-  return (
-
-
-    <Header>
-            <div className='container mx-auto'>
-                <div className="grid grid-cols-3 gap-10 p-20 border">
-
-          {  
-            todos.map((todo, i) => (
-
-                       <Link to={`/view-todo/${todo.todo_id}`}>
-                          <div key={todo.todo_id} data-tip={todo.title} className='grid grid-cols  rounded-3xl '> 
-                          {/* {console.log(typeof(todo.status))} */}
-                            <TodoCard  name={todo} bgcolor={Colors(todo.todo_id)}/>
-                          </div>
-                        </Link>
+   }
+    
+    
+    return (
+        <Header>
+            <br /><br /><br />
+      
+        <div className="p-10">
+            <div className="flex items-center justify-center" >
+                <div className="w-8/12 bg-white border border-gray-100 rounded-lg text-center hover:shadow-lg align-center">
+                    <div className="flex justify-center">
+                        <img src={recyclingreuse} alt="#" className="w-40 rounded-full object-center border-4 border-white -mt-10 shadow-lg align-center" />
+                        </div>
                         
-                        ))
-                    
-                    }
-                    
-  
-                    
+                        <p className="font-bold pt-3 pb-2 text-2xl">{getCategoryNameUsingEnumKey(todo.category)}</p>
+                        <p className="font-bold pt-3 pb-2 text-2xl">{todo.title}</p>
+                        <p className="font-bold pt-3 pb-2 text-2xl">{todo.contents}</p>
+                        <p className="font-bold px-10 mb-5 text-gray-500" > { todo.todo_date}</p>
+                        <p className="font-bold px-10 mb-5 text-gray-500" > { todo.todo_time}</p>
+                    <DeleteButtons HandleClick={HandleDeleteClick}/>           
+                </div>
+                
+            </div>
 
                 </div>
-            </div>
-        
-
-   
-    
-   </Header>       
-        
-    
-  )
-   
+     </Header>
+    )
 }
-
-export default ViewTodo;
+export default ViewTodo
